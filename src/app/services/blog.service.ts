@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Blog, Post } from '../models/blog';
+import { Blog, Post, PostCategory } from '../models/blog';
 import { BLOG } from '../../data/blog';
 
 @Injectable({
@@ -10,10 +10,18 @@ export class BlogService {
 
   preferiti: Post[] = [];
 
+  selectedCategory?: PostCategory;
+
   constructor() { }
 
   getPosts() {
+    this.selectedCategory = undefined;
     return this.insiemeDiTuttiIDati.posts;
+  }
+
+  getPostsByCategory(category: PostCategory) {
+    this.selectedCategory = category;
+    return this.insiemeDiTuttiIDati.posts.filter(x => x.category == this.selectedCategory!.id);
   }
 
   getCategories() {
