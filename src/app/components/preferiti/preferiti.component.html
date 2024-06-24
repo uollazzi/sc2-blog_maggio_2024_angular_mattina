@@ -1,0 +1,19 @@
+<h2>Preferiti</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let p of bs.preferiti">
+    {{ p.title }}
+    <button
+      type="button"
+      class="btn btn-close"
+      (click)="bs.rimuoviDaPreferiti(p)"
+    ></button>
+  </li>
+</ul>
+<button
+  class="btn btn-danger"
+  type="button"
+  (click)="bs.svuotaPreferiti()"
+  *ngIf="bs.preferiti.length > 0"
+>
+  Svuota
+</button>
